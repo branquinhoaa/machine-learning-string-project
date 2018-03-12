@@ -1,4 +1,8 @@
-# here we import the module from sklearn that is responsible for read the words and create a bag of words
+# This file is intended to explain about the implementation of 'bag of words'
+# Bag of words is a methodology of machine learning that is used to count the frequency of the
+# words used in a text. So, lets start with this!
+
+# Here we import the module from sklearn that is responsible for read the words and create a bag of words:
 
 from sklearn.feature_extraction.text import CountVectorizer
 

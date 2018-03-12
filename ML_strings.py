@@ -35,3 +35,14 @@ import nltk
 
 from nltk.corpus import stopwords
 sw = stopwords.words("english")
+
+# there are some limitations with bag of words. One of them is that many words can be different if analysed letter by letter
+# but they may transmit the same idea: love, loves, loved.
+# To put together all this words, there is a process called stemming that will find the word stem and put all the words
+# together. How can we do this? like shown below:
+
+from nltk.stem.snowball import SnowballStemmer
+stemmer = SnowballStemmer("english")
+
+# Example for the word responsiveness - the stem is respons
+stemmer.stem("responsiveness")

@@ -46,3 +46,38 @@ stemmer = SnowballStemmer("english")
 
 # Example for the word responsiveness - the stem is respons
 stemmer.stem("responsiveness")
+
+
+# the preprocessing stemming is made before to compute the bag of words - because is the only way to condense the words.
+# using this idea, we can now create a preprocessing and training a robot to tell us who wrote each email that we receive.
+# So, in this project I will  develop a robot to identify the author of different songs.
+
+# The first step is to choose different songs
+# After that I will preprocessing my data. That means that I will need stem the songs I want to evaluate
+
+# PREPROCESSING METHOD
+
+import string
+def preprocessing_text(file):
+  file.seek(0) # go back to the position 0 of my file
+  all_file_content = file.read()
+  file_words = ""
+
+  if len(all_file_content)>1:
+    #the line below will remove the punctuation
+    just_string = all_file_content[1].translate(string.maketrans("", ""), string.punctuation)
+
+    #now, the process of stemming:
+    stemmer = SnowballStemmer("english")
+      for word in text_string.split():
+        words += stemmer.stem(word) + " "
+
+  return words
+
+
+def main():
+  # here I will read different songs and return the words
+  pass
+
+if __name__ == '__main__':
+  main()

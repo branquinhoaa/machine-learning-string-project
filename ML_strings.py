@@ -75,8 +75,32 @@ def preprocessing_text(file):
   return words
 
 
+def iterate_over_songs(from_mj):
+  all_word_songs = []
+  singers = []
+  for singer, song_path in [("mj", from_mj), ("cd", from_cd)]:
+    for path in song:
+      path = os.path.join('..', path[:-1])
+      song = open(song_path, "r")
+      song_ready = preprocessing_text(song)
+      all_word_songs.append(song_ready)
+      if singer=="mj":
+        singers.append("0")
+      if singer=="cd":
+        singers.append("1")
+
+      song.close()
+
+
+
 def main():
   # here I will read different songs and return the words
+  # songs from michael jackson
+  from_mj = open("fromMJ", "r")
+  # from celine dion
+  from_cd = open("fromCD", "r")
+  iterate_over_songs(from_mj, from_cd)
+
   pass
 
 if __name__ == '__main__':

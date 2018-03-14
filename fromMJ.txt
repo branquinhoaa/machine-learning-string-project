@@ -1,0 +1,5 @@
+songs/mickael_jackson/beat_it.
+songs/mickael_jackson/ben.
+songs/mickael_jackson/billie_jean.
+songs/mickael_jackson/love_never_felt_so_good.
+songs/mickael_jackson/rock_with_you.

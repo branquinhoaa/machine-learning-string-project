@@ -28,7 +28,7 @@ bag_of_words = vectorizer.transform(list_of_emails)
 # and a list of integers indicating the word count
 # just like this: (document number - in my case the variable email, word number - the word order inside the text) word frequency
 
-# Data preprocessing: removing the stepwords (not important ones because they are very common in you vocabulary and does not mean a lot)
+# Data preprocessing: removing the stopwords (not important ones because they are very common in you vocabulary and does not mean a lot)
 import nltk
 
 # you will need to download the nltk (you can do it using command line)
@@ -51,57 +51,3 @@ stemmer.stem("responsiveness")
 # the preprocessing stemming is made before to compute the bag of words - because is the only way to condense the words.
 # using this idea, we can now create a preprocessing and training a robot to tell us who wrote each email that we receive.
 # So, in this project I will  develop a robot to identify the author of different songs.
-
-# The first step is to choose different songs
-# After that I will preprocessing my data. That means that I will need stem the songs I want to evaluate
-
-# PREPROCESSING METHOD
-
-import string
-def preprocessing_text(file):
-  file.seek(0) # go back to the position 0 of my file
-  all_file_content = file.read()
-  file_words = ""
-
-  if len(all_file_content)>1:
-    #the line below will remove the punctuation
-    just_string = all_file_content[1].translate(string.maketrans("", ""), string.punctuation)
-
-    #now, the process of stemming:
-    stemmer = SnowballStemmer("english")
-      for word in text_string.split():
-        words += stemmer.stem(word) + " "
-
-  return words
-
-
-def iterate_over_songs(from_mj):
-  all_word_songs = []
-  singers = []
-  for singer, song_path in [("mj", from_mj), ("cd", from_cd)]:
-    for path in song:
-      path = os.path.join('..', path[:-1])
-      song = open(song_path, "r")
-      song_ready = preprocessing_text(song)
-      all_word_songs.append(song_ready)
-      if singer=="mj":
-        singers.append("0")
-      if singer=="cd":
-        singers.append("1")
-
-      song.close()
-
-
-
-def main():
-  # here I will read different songs and return the words
-  # songs from michael jackson
-  from_mj = open("fromMJ", "r")
-  # from celine dion
-  from_cd = open("fromCD", "r")
-  iterate_over_songs(from_mj, from_cd)
-
-  pass
-
-if __name__ == '__main__':
-  main()

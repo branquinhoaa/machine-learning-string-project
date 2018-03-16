@@ -46,9 +46,20 @@ def iterate_over_songs(from_mj):
 # This will help me to identify words (specific/technical vocabulary) that are used just for some person and not for others.
 def tf_idf_representation(songs_from_artists):
   from sklearn.feature_extraction.text import TfidfVectorizer
-  vectorizer = TfidfVectorizer(stop_words="english") # in this line I already remove all stop words without using nltk
+  #the max_df means that if a word occurs more than 50% in my text, I will remove it because it has no strong meaning for me
+  vectorizer = TfidfVectorizer(max_df=0.5, stop_words="english") # in this line I already remove all stop words without using nltk
   vectorizer.fit_transform(songs_from_artists)
+  feature_selection()
   # now, my vector is already filled with all the words for all the songs! and everything is ready to start with my analysis
+
+
+# This step also is part of my preprocessing step and it will select the variables or words that are more
+# significant for my purpose
+def feature_selection()
+  from sklearn.feature_selection import SelectPercentile, f_classif
+  # the select percentile will select just the 10% of the features - the 10% most important ones
+  selector = SelectPercentile(f_classif, percentile=10)
+
 
 
 def main():

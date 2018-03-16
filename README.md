@@ -1,8 +1,8 @@
-# This is my machine learning string project! Welcome
+# Welcome to my machine learning string project! 
 
 ## Here I develop and try to explain all the steps to work with ML using strings/text
 
-I have two main goals here:
+I have two main goals:
 
-* I will explain what do I am using and why (file explanations).
+* Explain what I am using in each step and why (file explanations).
 * After that I create a simple code to identify song authors from musics (file project).

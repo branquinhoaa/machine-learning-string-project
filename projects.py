@@ -46,9 +46,11 @@ def iterate_over_songs(from_mj):
 # This will help me to identify words (specific/technical vocabulary) that are used just for some person and not for others.
 def tf_idf_representation(songs_from_artists):
   from sklearn.feature_extraction.text import TfidfVectorizer
-  #the max_df means that if a word occurs more than 50% in my text, I will remove it because it has no strong meaning for me
+  # the max_df means that if a word occurs more than 50% in my documents, 
+  # it will remove it because it has no strong meaning for me
   vectorizer = TfidfVectorizer(max_df=0.5, stop_words="english") # in this line I already remove all stop words without using nltk
-  vectorizer.fit_transform(songs_from_artists)
+  songs_to_train = vectorizer.fit_transform(songs_from_artists)
+  # todo: songs to test 
   feature_selection()
   # now, my vector is already filled with all the words for all the songs! and everything is ready to start with my analysis
 
@@ -58,8 +60,15 @@ def tf_idf_representation(songs_from_artists):
 def feature_selection()
   from sklearn.feature_selection import SelectPercentile, f_classif
   # the select percentile will select just the 10% of the features - the 10% most important ones
+  # we remove words without much meaning, or words that would not help you to identify the  song authors
   selector = SelectPercentile(f_classif, percentile=10)
 
+
+# in this function I use the sklearn cross validation to separate my data in training and test data
+# and then verify what is the accuracy of my robot to predict the singers 
+def cross_validation_for_songs(all_songs, all_singers):
+  from sklearn import cross_validation
+  X_train, X_test, y_train, y_test = cross_validation.train_test_split(all_songs, all_singers, test_size=0.4, random_state=0)
 
 
 def main():
